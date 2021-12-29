@@ -74,11 +74,13 @@ typ = int(input("Number of correct number not in correct position: "))
 count = 1
 while(pos != 4 or typ != 0):
     # remove bad guesses from possibilities set
+    newguesses = []
     for x in possibleset:
         posspos = countCorrectPos(guess, x)
         posstyp = countCorrectType(guess, x) - posspos
-        if (pos != posspos or typ != posstyp):
-            possibleset.remove(x)
+        if (pos == posspos and typ == posstyp):
+            newguesses += [x]
+    possibleset = newguesses
     
     # minmax
     for i in range(len(totalset)):
