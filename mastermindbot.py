@@ -72,7 +72,7 @@ oldguesses += [guess]
 pos = int(input("Number in correct position: "))
 typ = int(input("Number of correct number not in correct position: "))
 count = 1
-while(pos != 4 or typ != 0):
+while(pos != length or typ != 0):
     # remove bad guesses from possibilities set
     newguesses = []
     for x in possibleset:
@@ -81,6 +81,11 @@ while(pos != 4 or typ != 0):
         if (pos == posspos and typ == posstyp):
             newguesses += [x]
     possibleset = newguesses
+
+    if (len(possibleset) == 0):
+        print("q")
+        sys.exit(1)
+
     
     # minmax
     for i in range(len(totalset)):
